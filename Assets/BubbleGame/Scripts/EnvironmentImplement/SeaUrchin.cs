@@ -24,6 +24,11 @@ public class SeaUrchin : MonoBehaviour
         {
             playertest = FindObjectOfType<PlayerAttributes>();
         }
+        if(playertest == null)
+        {
+            Destroy(gameObject);
+            return;
+        }
         if(transform.position.y < playertest.transform.position.y - 10)
         {
             Destroy(gameObject);

@@ -24,7 +24,12 @@ public class Fish : MonoBehaviour, RandomParameter
         {
             player = FindObjectOfType<PlayerController2D>();
         }
-
+        if (player == null)
+        {
+            //说明没找到
+            Destroy(gameObject);
+            return;
+        }
         // ����λ��
         transform.position = new Vector3(originPos.x + 10 * Mathf.Sin(Time.time * speed), originPos.y, originPos.z);
 
@@ -49,6 +54,10 @@ public class Fish : MonoBehaviour, RandomParameter
                 isAtached = false;
             }
             else player.transform.position = transform.position;
+        }
+        if(player == null)
+        {
+            Destroy(gameObject);
         }
         if (transform.position.y < player.transform.position.y - 10)
         {

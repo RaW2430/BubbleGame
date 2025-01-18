@@ -34,6 +34,11 @@ public class GenerateEnv : MonoBehaviour
 
     private void Update()
     {
+        if (player == null)
+        {
+            Destroy(gameObject);
+            return;
+        }
         if(player.position.y > (generateBeginY+generateEndY)/2)
         {
             Debug.Log("Generate");

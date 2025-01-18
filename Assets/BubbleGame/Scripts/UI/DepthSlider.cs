@@ -25,7 +25,11 @@ public class DepthSlider : MonoBehaviour
         {
             playerAttributes = FindObjectOfType<PlayerAttributes>();
         }
-        value = playerAttributes.transform.position.y+114;
-        slider.value = ratio;
+        else
+        {
+            value = playerAttributes.transform.position.y+114;
+            slider.value = ratio;
+        }
+
     }
 }

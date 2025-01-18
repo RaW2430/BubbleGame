@@ -17,7 +17,7 @@ public class PlayerController2D : MonoBehaviour
     private float sPressTime = 0f;
     private PlayerAttributes playerAttributes;
 
-
+    private float lastFreezeTime = 0f;
     public bool isFreezed = false;
 
     // Start is called before the first frame update
@@ -122,9 +122,11 @@ public class PlayerController2D : MonoBehaviour
         rb.angularVelocity = 0f;
         rb.isKinematic = true;
         isFreezed = true;
+        lastFreezeTime = Time.time;
     }
     public void UnfreezePlayer()
     {
+        if (Time.time - lastFreezeTime < 0.5f) return;
         isFreezed = false;
         rb.isKinematic = false;
     }

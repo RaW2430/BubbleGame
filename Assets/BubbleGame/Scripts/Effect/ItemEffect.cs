@@ -6,8 +6,8 @@ public class ItemEffect : MonoBehaviour
 {
     public enum EffectType
     {
-        Rotate = 0,
-        Scale = 1,
+        Scale = 0,
+        Rotate = 1,
         // 其他效果编号可以在这里添加
     }
 

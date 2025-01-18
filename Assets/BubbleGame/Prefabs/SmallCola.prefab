@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6883212596396241133}
   - component: {fileID: 8924063831809807774}
   - component: {fileID: 1778195132133873325}
+  - component: {fileID: 8351522300843448472}
   m_Layer: 0
   m_Name: SmallCola
   m_TagString: Untagged
@@ -146,3 +147,19 @@ MonoBehaviour:
   speedMultiplier: 3
   speedUpTime: 5
   invincibleTime: 5
+--- !u!114 &8351522300843448472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 765409296571266817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3288e92102a0a024590ac2741b26d853, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectType: 0
+  rotateSpeed: 5
+  scaleSpeed: 3
+  scaleRange: {x: 0.8, y: 1.2}

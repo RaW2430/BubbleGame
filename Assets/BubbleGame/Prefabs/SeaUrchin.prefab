@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2056275443734643652}
   - component: {fileID: 566084229952323170}
   - component: {fileID: 5278741815621736185}
+  - component: {fileID: 775646518006530121}
   m_Layer: 0
   m_Name: SeaUrchin
   m_TagString: Untagged
@@ -134,3 +135,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
+--- !u!114 &775646518006530121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9193711245207394229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3288e92102a0a024590ac2741b26d853, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectType: 0
+  rotateSpeed: 5
+  scaleSpeed: 3
+  scaleRange: {x: 0.8, y: 1.3}

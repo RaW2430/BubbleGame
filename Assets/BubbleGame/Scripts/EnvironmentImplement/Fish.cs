@@ -22,7 +22,7 @@ public class Fish : MonoBehaviour,RandomParameter
         {
             player = FindObjectOfType<PlayerController2D>();
         }   
-        transform.position = new Vector3(originPos.x + Mathf.Sin(Time.time * speed), originPos.y, originPos.z);
+        transform.position = new Vector3(originPos.x + 10*Mathf.Sin(Time.time * speed), originPos.y, originPos.z);
         if (isAtached)
         {
             if (!player.isFreezed)

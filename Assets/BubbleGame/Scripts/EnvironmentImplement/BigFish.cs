@@ -26,7 +26,7 @@ public class BigFish : MonoBehaviour
         {
             playerAttributes = FindObjectOfType<PlayerAttributes>();
         }
-        transform.position = new Vector3(originPos.x + Mathf.Sin(Time.time * speed), originPos.y, originPos.z);
+        transform.position = new Vector3(originPos.x + 10*Mathf.Sin(Time.time * speed), originPos.y, originPos.z);
         if(transform.position.y < playerAttributes.transform.position.y - 10)
         {
             Destroy(gameObject);

@@ -17,7 +17,10 @@ public class OceanCurrent : MonoBehaviour,RandomParameter
     private void OnTriggerStay2D(Collider2D other)
     {
         if (player.isFreezed) return;
-        player.rb.AddForce(transform.right * accelerationBias);
+        if(transform.localScale.x>0)
+            player.rb.AddForce(Vector2.right * accelerationBias);
+        else
+            player.rb.AddForce(Vector2.left * accelerationBias);
     }
 
     void RandomParameter.GenerateRandomParameter()
@@ -25,7 +28,7 @@ public class OceanCurrent : MonoBehaviour,RandomParameter
         //根据位置调整朝向
         if (transform.position.x < 0)
         {
-            transform.localScale = new Vector3(-1, 1, 1);
+            transform.localScale=new Vector3(transform.localScale.x*-1,transform.localScale.y,transform.localScale.z);
         }
     }
 

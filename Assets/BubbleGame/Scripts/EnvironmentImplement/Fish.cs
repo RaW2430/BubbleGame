@@ -25,14 +25,14 @@ public class Fish : MonoBehaviour, RandomParameter
             player = FindObjectOfType<PlayerController2D>();
         }
 
-        // ¸üÐÂÎ»ÖÃ
+        // ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½
         transform.position = new Vector3(originPos.x + 10 * Mathf.Sin(Time.time * speed), originPos.y, originPos.z);
 
-        // ¼ÆËãËÙ¶È·½Ïò
+        // ï¿½ï¿½ï¿½ï¿½ï¿½Ù¶È·ï¿½ï¿½ï¿½
         Vector3 velocity = (transform.position - lastPosition) / Time.deltaTime;
         lastPosition = transform.position;
 
-        // ÅÐ¶ÏËÙ¶È·½Ïò²¢Ðý×ª
+        // ï¿½Ð¶ï¿½ï¿½Ù¶È·ï¿½ï¿½ï¿½ï¿½ï¿½×ª
         if (velocity.x > 0)
         {
             transform.rotation = Quaternion.Euler(0, 180, 0);
@@ -67,6 +67,6 @@ public class Fish : MonoBehaviour, RandomParameter
 
     void RandomParameter.GenerateRandomParameter()
     {
-        speed = UnityEngine.Random.Range(0.5f, 8f);
+        speed = UnityEngine.Random.Range(0.5f, 1.5f);
     }
 }

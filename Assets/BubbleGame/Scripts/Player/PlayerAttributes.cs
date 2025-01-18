@@ -13,7 +13,8 @@ public class PlayerAttributes : MonoBehaviour
     public float invincibleTime = 5f;
     public float speedUpTime = 5f;
     public float speedMultiplier = 2f;
-    public bool isInvincible = false; 
+    public bool isInvincible = false;
+    public GameObject gameManager;
     private float initAltitude = -10984f;
     private Animator animator;
     private float offset;
@@ -58,7 +59,7 @@ public class PlayerAttributes : MonoBehaviour
             {
                 healthStage = 2;
             }
-            else if(health >= 60 && health < 90)
+            else if (health >= 60 && health < 90)
             {
                 healthStage = 3;
             }
@@ -145,7 +146,12 @@ public class PlayerAttributes : MonoBehaviour
             animator.SetTrigger("IsDead"); // 播放死亡动画
             yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length); // 等待动画播放完毕
         }
+        RestartEvent();
         Destroy(gameObject); // 销毁Player对象
+    }
+    void RestartEvent()
+    {
+        gameManager.GetComponent<UIEvent>().RestartGame();
     }
 }
 

@@ -15,6 +15,7 @@ public class Rock : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("Rock OnTriggerEnter2D");
+        if (player.GetComponent<PlayerAttributes>().isInvincible) return;
         player.FreezePlayer();
         player.transform.position = transform.position;
     }

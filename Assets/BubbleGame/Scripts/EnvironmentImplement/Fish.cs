@@ -60,6 +60,7 @@ public class Fish : MonoBehaviour, RandomParameter
     {
         if (isTriggered || player == null) return;
         Debug.Log("Fish OnTriggerEnter2D");
+        if (player.GetComponent<PlayerAttributes>().isInvincible) return;
         player.FreezePlayer();
         isAtached = true;
         isTriggered = true;

@@ -3,7 +3,8 @@ guid: 74369f7aa2eedf34c94a846b661d806a
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - hurtPointPrefab: {fileID: 4518097391052116991, guid: 523c9502262a23d48a8089adb2efe9bf, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

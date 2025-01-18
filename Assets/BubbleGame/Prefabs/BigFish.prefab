@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 389490296907804207}
   - component: {fileID: 3551868885816768923}
   - component: {fileID: 5928256265979360555}
+  - component: {fileID: 1781863222777494156}
   m_Layer: 0
   m_Name: BigFish
   m_TagString: Untagged
@@ -159,3 +160,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hurtPointPrefab: {fileID: 0}
+--- !u!114 &1781863222777494156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2264776009960675773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3288e92102a0a024590ac2741b26d853, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectType: 0
+  rotateSpeed: 5
+  scaleSpeed: 3
+  scaleRange: {x: 0.9, y: 1.1}

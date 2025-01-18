@@ -12,9 +12,17 @@ public class Fountain : MonoBehaviour
     
     void Awake()
     {
-        player = FindObjectOfType<PlayerController2D>();
+        
+        
     }
 
+    private void Update()
+    {
+        if (player == null)
+        {
+            player = FindObjectOfType<PlayerController2D>();
+        }
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (player.isFreezed) return;

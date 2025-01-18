@@ -13,11 +13,15 @@ public class Fish : MonoBehaviour
     private void Awake()
     {
         originPos = transform.position;
-        player = FindObjectOfType<PlayerController2D>();
+        
     }
 
     private void Update()
     {
+        if (player == null)
+        {
+            player = FindObjectOfType<PlayerController2D>();
+        }   
         transform.position = new Vector3(originPos.x + Mathf.Sin(Time.time * speed), originPos.y, originPos.z);
         if (isAtached)
         {
@@ -31,7 +35,7 @@ public class Fish : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (isTriggered) return;
+        if (isTriggered || player == null ) return;
         Debug.Log("Fish OnTriggerEnter2D");
         player.FreezePlayer();
         isAtached = true;

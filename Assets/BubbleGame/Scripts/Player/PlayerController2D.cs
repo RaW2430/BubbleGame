@@ -116,7 +116,6 @@ public class PlayerController2D : MonoBehaviour
         }
     }
     
-    
     public void FreezePlayer()
     {
         rb.velocity = Vector2.zero;

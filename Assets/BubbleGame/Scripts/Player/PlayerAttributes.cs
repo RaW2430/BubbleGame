@@ -44,11 +44,11 @@ public class PlayerAttributes : MonoBehaviour
 
     void UpdateHealthAnimation()
     {
-        if (animator != null)
-        {
-            int healthStage = Mathf.FloorToInt(health / 10);
-            animator.SetInteger("HealthStage", healthStage);
-        }
+        //if (animator != null)
+        //{
+        //    int healthStage = Mathf.FloorToInt(health / 10);
+        //    animator.SetInteger("HealthStage", healthStage);
+        //}
     }
 
     void UpdateAltitudeText()

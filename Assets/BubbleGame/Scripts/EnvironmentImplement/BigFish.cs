@@ -1,12 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class BigFish : MonoBehaviour
 {
     public int damage = 10;
-    private Playertest playertest;
     public float speed;
     private Vector3 originPos;
 
@@ -16,7 +16,6 @@ public class BigFish : MonoBehaviour
     
     private void Awake()
     {
-        playertest = FindObjectOfType<Playertest>();
         originPos = transform.position;
     }
 
@@ -27,8 +26,9 @@ public class BigFish : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other)
     {
+        PlayerAttributes playerAttributes = other.GetComponent<PlayerAttributes>();
         if (isTriggered) return;
-        playertest.ReduceHp(damage);
+        playerAttributes.TakeDamage(damage);
         isTriggered = true;
     }
 }

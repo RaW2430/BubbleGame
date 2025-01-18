@@ -45,7 +45,7 @@ public class PlayerAttributes : MonoBehaviour
         {
             isDead = true;
             animator.SetBool("IsDead", true); // 播放死亡动画
-            rb.velocity = Vector3.zero;
+            rb.bodyType = RigidbodyType2D.Static;
             //Debug.Log("Am I dead?");
             StartCoroutine(DieCoroutine());
         }

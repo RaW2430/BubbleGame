@@ -8,8 +8,8 @@ public class PlayerController2D : MonoBehaviour
     public float horizontalForce = 10f; // 左右横移的力
     public float downwardForce = 10f; // 向下的力
     public float extraUpwardAcceleration = 5f; // 额外向上的加速度
-    public float maxVerticalSpeed = 5f; // 最大垂直速度
-    public float maxHorizontalSpeed = 5f; // 最大水平速度
+    public float maxVerticalSpeed = 30f; // 最大垂直速度
+    public float maxHorizontalSpeed = 10f; // 最大水平速度
     public float healthDecreaseRate = 1f; // 每秒扣血量
     private Rigidbody2D rb;
     private bool isPressingS = false;

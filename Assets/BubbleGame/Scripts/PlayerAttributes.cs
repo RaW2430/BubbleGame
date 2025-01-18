@@ -8,17 +8,24 @@ public class PlayerAttributes : MonoBehaviour
 {
     public float health = 100f;
     public float extraAcceleration = 0f;
-    public bool shield = false;
-    public TextMeshProUGUI altitudeText; // 引用UI Text组件
-    private float initAltitude = -10984f; 
+    public TextMeshProUGUI altitudeText;
+    public float invincibleTime = 5f;
+    public float speedUpTime = 5f;
+    public float speedMultiplier = 2f;
+    public bool isInvincible = false;
+    private float initAltitude = -10984f;
     private Animator animator;
     private float offset;
+    private Rigidbody2D rb;
+    private SpriteRenderer spriteRenderer;
 
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
         offset = transform.position.y;
+        rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -50,27 +57,63 @@ public class PlayerAttributes : MonoBehaviour
     {
         if (altitudeText != null)
         {
-            float newAltitude = transform.position.y + initAltitude - offset;  
+            float newAltitude = transform.position.y + initAltitude - offset;
             altitudeText.text = "Altitude: " + newAltitude.ToString("F2") + "m";
         }
     }
 
     public void TakeDamage(float damage)
     {
-        if (shield)
+        if (isInvincible)
         {
-            // 如果有护盾，减少伤害
-            damage *= 0.5f;
+            // 如果无敌状态，不受伤害
+            return;
         }
 
         health -= damage;
 
         if (health < 0)
         {
-            health = 0;
+            Die();
+        }
+    }
+    //无敌事件
+    public void ActivateInvincibility()
+    {
+        if (!isInvincible)
+        {
+            StartCoroutine(InvincibilityCoroutine());
         }
     }
 
+    private IEnumerator InvincibilityCoroutine()
+    {
+        isInvincible = true;
+        float elapsedTime = 0f;
+        while (elapsedTime < invincibleTime)
+        {
+            spriteRenderer.enabled = !spriteRenderer.enabled; // 切换可见性
+            yield return new WaitForSeconds(0.1f); // 每0.1秒切换一次
+            elapsedTime += 0.1f;
+        }
+        spriteRenderer.enabled = true; // 确保在结束时可见
+        isInvincible = false;
+    }
+
+    //加速事件
+    public void ActivateSpeedBoost()
+    {
+        StartCoroutine(SpeedBoostCoroutine());
+    }
+
+    private IEnumerator SpeedBoostCoroutine()
+    {
+        float originalSpeed = rb.velocity.magnitude;
+        rb.velocity *= speedMultiplier;
+        yield return new WaitForSeconds(speedUpTime);
+        rb.velocity = rb.velocity.normalized * originalSpeed;
+    }
+    //死亡事件
     void Die()
     {
         // 触发死亡UI
@@ -79,5 +122,7 @@ public class PlayerAttributes : MonoBehaviour
         Destroy(gameObject);
     }
 }
+
+
 
 

@@ -7,7 +7,7 @@ public class SeaUrchin : MonoBehaviour
 {
     public int damage = 10;
     private PlayerAttributes playertest;
-
+    bool isTriggered = false;
     private void Awake()
     {
         playertest = FindObjectOfType<PlayerAttributes>();
@@ -20,6 +20,9 @@ public class SeaUrchin : MonoBehaviour
     
     private void Update()
     {
+        if(isTriggered) return;
+        isTriggered = true;
+        
         if (playertest == null)
         {
             playertest = FindObjectOfType<PlayerAttributes>();

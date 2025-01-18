@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static ItemEffect;
 
 public class PlayerAttributes : MonoBehaviour
 {
@@ -24,7 +25,7 @@ public class PlayerAttributes : MonoBehaviour
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
     private int healthStage = 2;
-    
+    private Vector3 originalScale;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +34,7 @@ public class PlayerAttributes : MonoBehaviour
         offset = transform.position.y;
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        originalScale = transform.localScale; // 保存原始scale
     }
 
     // Update is called once per frame
@@ -49,33 +51,57 @@ public class PlayerAttributes : MonoBehaviour
             //Debug.Log("Am I dead?");
             StartCoroutine(DieCoroutine());
         }
+        
+        switch (healthStage)
+        {
+            case 0:
+                //transform.localScale = new Vector3(10f, 10f, 1f); // 修改scale倍率
+                transform.localScale = originalScale * 0.7f;
+                break;
+            case 1:
+                //transform.localScale = new Vector3(15f, 15f, 1f); // 修改scale倍率
+                transform.localScale = originalScale * 0.9f;
+                break;
+            case 2:
+                //transform.localScale = new Vector3(20f, 20f, 1f); // 修改scale倍率
+                transform.localScale = originalScale * 1f;
+                break;
+            case 3:
+                //transform.localScale = new Vector3(25f, 25f, 1f); // 修改scale倍率
+                transform.localScale = originalScale * 1.5f;
+                break;
+        }
     }
 
     void UpdateHealthAnimation()
     {
         if (animator != null)
         {
-            if (health > 0 && health < 10)
+            CircleCollider2D circleCollider = GetComponent<CircleCollider2D>();
+            if (circleCollider != null)
             {
-                healthStage = 0;
+                if (health > 0 && health < 30)
+                {
+                    healthStage = 0;
+                    //circleCollider.radius = 0.16f; // 修改圆形碰撞体的倍率
+                }
+                else if (health >= 30 && health < 60)
+                {
+                    healthStage = 1;
+                    //circleCollider.radius = 0.32f; // 修改圆形碰撞体的倍率
+                }
+                else if (health >= 60 && health < 90)
+                {
+                    healthStage = 2;
+                    //circleCollider.radius = 0.47f; // 修改圆形碰撞体的倍率
+                }
+                else if (health >= 90)
+                {
+                    healthStage = 3;
+                    //circleCollider.radius = 0.62f; // 修改圆形碰撞体的倍率
+                }
+                animator.SetInteger("HealthStage", healthStage);
             }
-            else if (health >= 10 && health < 30)
-            {
-                healthStage = 1;
-            }
-            else if (health >= 30 && health < 60)
-            {
-                healthStage = 2;
-            }
-            else if (health >= 60 && health < 90)
-            {
-                healthStage = 3;
-            }
-            else if (health >= 90)
-            {
-                healthStage = 4;
-            }
-            animator.SetInteger("HealthStage", healthStage);
         }
     }
 
@@ -102,7 +128,7 @@ public class PlayerAttributes : MonoBehaviour
         {
             //StartCoroutine(DieCoroutine());
         }
-        else
+        if(!isDead && !isHurt && health > 0)
         {
             StartCoroutine(HurtCoroutine());
         }
@@ -117,10 +143,11 @@ public class PlayerAttributes : MonoBehaviour
     {
         isHurt = true;
         animator.SetBool("IsHurt", true); // 播放受伤动画
-        yield return new WaitForSeconds(hurtTime); // 受伤状态持续5秒
+        yield return new WaitForSeconds(hurtTime); // 受伤状态持续
         animator.SetBool("IsHurt", false); // 结束受伤动画
         isHurt = false;
     }
+
     //无敌事件
     public void ActivateInvincibility()
     {
@@ -166,7 +193,7 @@ public class PlayerAttributes : MonoBehaviour
             yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length); // 等待动画播放完毕
         }
         RestartEvent();
-        //Destroy(gameObject); // 销毁Player对象
+        Destroy(gameObject); // 销毁Player对象
     }
     void RestartEvent()
     {

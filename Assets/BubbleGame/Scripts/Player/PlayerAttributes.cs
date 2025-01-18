@@ -8,18 +8,12 @@ public class PlayerAttributes : MonoBehaviour
 {
     public float health = 100f;
     public float extraAcceleration = 0f;
-<<<<<<< HEAD
     public TextMeshProUGUI altitudeText;
     public float invincibleTime = 5f;
     public float speedUpTime = 5f;
     public float speedMultiplier = 2f;
     public bool isInvincible = false;
     private float initAltitude = -10984f;
-=======
-    public bool shield = false;
-    public TextMeshProUGUI altitudeText; // 引用UI Text组件
-    private float initAltitude = -10984f; 
->>>>>>> d09ce8c0adfa8fdfbb452e031a068ae5247c9f29
     private Animator animator;
     private float offset;
     private Rigidbody2D rb;
@@ -37,13 +31,10 @@ public class PlayerAttributes : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // 根据健康值触发不同的动画
         UpdateHealthAnimation();
 
-        // 更新海拔高度文本
         UpdateAltitudeText();
 
-        // 检查健康值是否小于0
         if (health <= 0)
         {
             Die();
@@ -72,13 +63,8 @@ public class PlayerAttributes : MonoBehaviour
     {
         if (isInvincible)
         {
-<<<<<<< HEAD
             // ����޵�״̬�������˺�
             return;
-=======
-            // 如果有护盾，减少伤害
-            damage *= 0.5f;
->>>>>>> d09ce8c0adfa8fdfbb452e031a068ae5247c9f29
         }
 
         health -= damage;
@@ -127,9 +113,6 @@ public class PlayerAttributes : MonoBehaviour
     //�����¼�
     void Die()
     {
-        // 触发死亡UI
-        //UIManager.Instance.ShowDeathUI();
-        // 销毁对象
         Destroy(gameObject);
     }
 }

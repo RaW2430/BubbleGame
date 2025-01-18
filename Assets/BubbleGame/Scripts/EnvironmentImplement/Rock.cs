@@ -4,18 +4,17 @@ using UnityEngine;
 
 public class Rock : MonoBehaviour
 {
-    private Playertest player;
+    private PlayerController2D player;
     
     void Awake()
     {
-        player = FindObjectOfType<Playertest>();
+        player = FindObjectOfType<PlayerController2D>();
     }
     
     private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("Rock OnTriggerEnter2D");
-        player.acceleration = new Vector3(0,0,0);
-        player.velocity = new Vector3(0,0,0);
-        player.rb.transform.parent = transform;
+        player.FreezePlayer();
+        player.transform.position = transform.position;
     }
 }

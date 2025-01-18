@@ -6,15 +6,15 @@ using UnityEngine;
 public class SeaUrchin : MonoBehaviour
 {
     public int damage = 10;
-    private Playertest playertest;
+    private PlayerAttributes playertest;
 
     private void Awake()
     {
-        playertest = FindObjectOfType<Playertest>();
+        playertest = FindObjectOfType<PlayerAttributes>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        playertest.ReduceHp(damage);
+        playertest.TakeDamage(damage);
     }
 }

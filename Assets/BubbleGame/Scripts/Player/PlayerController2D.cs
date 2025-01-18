@@ -4,18 +4,21 @@ using UnityEngine;
 
 public class PlayerController2D : MonoBehaviour
 {
-    public float upwardAcceleration = 1f; // ÏòÉÏµÄ¼ÓËÙ¶È
-    public float extraUpwardAcceleration = 5f; // ¶îÍâÏòÉÏµÄ¼ÓËÙ¶È
-    public float horizontalForce = 10f; // ×óÓÒºáÒÆµÄÁ¦
-    public float downwardForce = 10f; // ÏòÏÂµÄÁ¦
-    public float maxVerticalSpeed = 30f; // ×î´ó´¹Ö±ËÙ¶È
-    public float maxHorizontalSpeed = 10f; // ×î´óË®Æ½ËÙ¶È
-    public float healthDecreaseRate = 1f; // Ã¿Ãë¿ÛÑªÁ¿
-    private Rigidbody2D rb;
+    public float upwardAcceleration = 1f; // ï¿½ï¿½ï¿½ÏµÄ¼ï¿½ï¿½Ù¶ï¿½
+    public float extraUpwardAcceleration = 5f; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÏµÄ¼ï¿½ï¿½Ù¶ï¿½
+    public float horizontalForce = 10f; // ï¿½ï¿½ï¿½Òºï¿½ï¿½Æµï¿½ï¿½ï¿½
+    public float downwardForce = 10f; // ï¿½ï¿½ï¿½Âµï¿½ï¿½ï¿½
+    public float maxVerticalSpeed = 30f; // ï¿½ï¿½ï¿½Ö±ï¿½Ù¶ï¿½
+    public float maxHorizontalSpeed = 10f; // ï¿½ï¿½ï¿½Ë®Æ½ï¿½Ù¶ï¿½
+    public float healthDecreaseRate = 1f; // Ã¿ï¿½ï¿½ï¿½Ñªï¿½ï¿½
+    public Rigidbody2D rb;
     private bool isPressingS = false;
     private bool isPressingW = false;
     private float sPressTime = 0f;
     private PlayerAttributes playerAttributes;
+
+
+    public bool isFreezed = false;
 
     // Start is called before the first frame update
     void Start()
@@ -27,31 +30,37 @@ public class PlayerController2D : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // ¼ì²â×óÓÒÒÆ¶¯ÊäÈë
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½
         if (Input.GetKey(KeyCode.A))
         {
             rb.AddForce(Vector2.left * horizontalForce);
+            UnfreezePlayer();
         }
         if (Input.GetKey(KeyCode.D))
         {
             rb.AddForce(Vector2.right * horizontalForce);
+            UnfreezePlayer();
         }
 
-        // ¼ì²âS¼ü°´ÏÂ
+        // ï¿½ï¿½ï¿½Sï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         if (Input.GetKeyDown(KeyCode.S))
         {
             isPressingS = true;
+            UnfreezePlayer();
+
         }
         if (Input.GetKeyUp(KeyCode.S))
         {
             isPressingS = false;
-            sPressTime = 0f; // ÖØÖÃ°´ÏÂÊ±¼ä
+            sPressTime = 0f; // ï¿½ï¿½ï¿½Ã°ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
         }
 
-        // ¼ì²âW¼ü°´ÏÂ
+        // ï¿½ï¿½ï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         if (Input.GetKeyDown(KeyCode.W))
         {
             isPressingW = true;
+            UnfreezePlayer();
+
         }
         if (Input.GetKeyUp(KeyCode.W))
         {
@@ -62,10 +71,10 @@ public class PlayerController2D : MonoBehaviour
     // FixedUpdate is called once per physics update
     void FixedUpdate()
     {
-        // Ó¦ÓÃÏòÉÏµÄ¼ÓËÙ¶È
+        // Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ÏµÄ¼ï¿½ï¿½Ù¶ï¿½
         rb.AddForce(Vector2.up * upwardAcceleration);
 
-        // ¼ì²âS¼ü°´ÏÂ²¢Ê©¼ÓÏòÏÂµÄÁ¦
+        // ï¿½ï¿½ï¿½Sï¿½ï¿½ï¿½ï¿½ï¿½Â²ï¿½Ê©ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½ï¿½ï¿½
         if (isPressingS)
         {
             rb.AddForce(Vector2.down * downwardForce);
@@ -76,7 +85,7 @@ public class PlayerController2D : MonoBehaviour
             }
         }
 
-        // ¼ì²âW¼ü°´ÏÂ²¢Ê©¼Ó¶îÍâÏòÉÏµÄ¼ÓËÙ¶È
+        // ï¿½ï¿½ï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½Â²ï¿½Ê©ï¿½Ó¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÏµÄ¼ï¿½ï¿½Ù¶ï¿½
         if (isPressingW)
         {
             rb.AddForce(Vector2.up * extraUpwardAcceleration);
@@ -86,7 +95,7 @@ public class PlayerController2D : MonoBehaviour
             }
         }
 
-        // ÏÞÖÆ´¹Ö±ËÙ¶È
+        // ï¿½ï¿½ï¿½Æ´ï¿½Ö±ï¿½Ù¶ï¿½
         if (rb.velocity.y > maxVerticalSpeed)
         {
             rb.velocity = new Vector2(rb.velocity.x, maxVerticalSpeed);
@@ -96,7 +105,7 @@ public class PlayerController2D : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, -maxVerticalSpeed);
         }
 
-        // ÏÞÖÆË®Æ½ËÙ¶È
+        // ï¿½ï¿½ï¿½ï¿½Ë®Æ½ï¿½Ù¶ï¿½
         if (rb.velocity.x > maxHorizontalSpeed)
         {
             rb.velocity = new Vector2(maxHorizontalSpeed, rb.velocity.y);
@@ -106,6 +115,21 @@ public class PlayerController2D : MonoBehaviour
             rb.velocity = new Vector2(-maxHorizontalSpeed, rb.velocity.y);
         }
     }
+    
+    
+    public void FreezePlayer()
+    {
+        rb.velocity = Vector2.zero;
+        rb.angularVelocity = 0f;
+        rb.isKinematic = true;
+        isFreezed = true;
+    }
+    public void UnfreezePlayer()
+    {
+        isFreezed = false;
+        rb.isKinematic = false;
+    }
+    
 }
 
 

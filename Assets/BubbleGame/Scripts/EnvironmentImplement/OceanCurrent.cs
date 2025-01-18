@@ -5,24 +5,18 @@ using UnityEngine;
 
 public class OceanCurrent : MonoBehaviour
 {
-    private Playertest player;
+    private PlayerController2D player;
     
     void Awake()
     {
-        player = FindObjectOfType<Playertest>();
+        player = FindObjectOfType<PlayerController2D>();
     }
     
     public float aceelerationBias = 10f;
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
-        Debug.Log("OceanCurrent OnTriggerStay2D");
-        player.acceleration+= new Vector3(aceelerationBias,0,0);
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        Debug.Log("OceanCurrent OnTriggerExit2D");
-        player.acceleration-= new Vector3(aceelerationBias,0,0);
+        if (player.isFreezed) return;
+        player.rb.AddForce(Vector2.right * aceelerationBias);
     }
 }

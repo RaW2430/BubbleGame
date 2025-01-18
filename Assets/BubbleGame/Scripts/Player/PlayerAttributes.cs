@@ -63,7 +63,7 @@ public class PlayerAttributes : MonoBehaviour
     {
         if (isInvincible)
         {
-            // Èç¹ûÎŞµĞ×´Ì¬£¬²»ÊÜÉËº¦
+            // å¦‚æœæ— æ•ŒçŠ¶æ€ï¼Œä¸å—ä¼¤å®³
             return;
         }
 
@@ -74,7 +74,7 @@ public class PlayerAttributes : MonoBehaviour
             Die();
         }
     }
-    //ÎŞµĞÊÂ¼ş
+    //æ— æ•Œäº‹ä»¶
     public void ActivateInvincibility()
     {
         if (!isInvincible)
@@ -89,15 +89,15 @@ public class PlayerAttributes : MonoBehaviour
         float elapsedTime = 0f;
         while (elapsedTime < invincibleTime)
         {
-            spriteRenderer.enabled = !spriteRenderer.enabled; // ÇĞ»»¿É¼ûĞÔ
-            yield return new WaitForSeconds(0.1f); // Ã¿0.1ÃëÇĞ»»Ò»´Î
+            spriteRenderer.enabled = !spriteRenderer.enabled; // åˆ‡æ¢å¯è§æ€§
+            yield return new WaitForSeconds(0.1f); // æ¯0.1ç§’åˆ‡æ¢ä¸€æ¬¡
             elapsedTime += 0.1f;
         }
-        spriteRenderer.enabled = true; // È·±£ÔÚ½áÊøÊ±¿É¼û
+        spriteRenderer.enabled = true; // ç¡®ä¿åœ¨ç»“æŸæ—¶å¯è§
         isInvincible = false;
     }
 
-    //¼ÓËÙÊÂ¼ş
+    //åŠ é€Ÿäº‹ä»¶
     public void ActivateSpeedBoost()
     {
         StartCoroutine(SpeedBoostCoroutine());
@@ -110,7 +110,7 @@ public class PlayerAttributes : MonoBehaviour
         yield return new WaitForSeconds(speedUpTime);
         rb.velocity = rb.velocity.normalized * originalSpeed;
     }
-    //ËÀÍöÊÂ¼ş
+    //æ­»äº¡äº‹ä»¶
     void Die()
     {
         Destroy(gameObject);

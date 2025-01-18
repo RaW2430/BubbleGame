@@ -5,16 +5,18 @@ using UnityEngine;
 
 public class CheckPoint : MonoBehaviour
 {
-    private Playertest player;
+    //private Playertest player;
     public int hpCheckValue = 50;
     private void Awake()
     {
-        player = FindObjectOfType<Playertest>();
+        //player = FindObjectOfType<Playertest>();
     }
     
     private void OnTriggerEnter2D(Collider2D other)
     {
+        PlayerAttributes playerAttributes = other.GetComponent<PlayerAttributes>();
         Debug.Log("CheckPoint OnTriggerEnter2D");
-        player.ReduceHp(hpCheckValue);
+        //player.ReduceHp(hpCheckValue);
+        playerAttributes.TakeDamage(hpCheckValue);
     }
 }

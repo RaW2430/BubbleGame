@@ -24,7 +24,7 @@ public class GenerateEnv : MonoBehaviour
     {
         //从资源中加载所有的GenerateSO
         GenerateSO[] generateSOArray = Resources.LoadAll<GenerateSO>("GenerateSO");
-        //generateSOs = new List<GenerateSO>(generateSOArray);
+        generateSOs = new List<GenerateSO>(generateSOArray);
         lastGenerateYs = new List<float>();
         for (int i = 0; i < generateSOs.Count; i++)
         {

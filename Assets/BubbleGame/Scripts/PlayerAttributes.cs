@@ -9,7 +9,7 @@ public class PlayerAttributes : MonoBehaviour
     public float health = 100f;
     public float extraAcceleration = 0f;
     public bool shield = false;
-    public TextMeshProUGUI altitudeText; // ÒıÓÃUI Text×é¼ş
+    public TextMeshProUGUI altitudeText; // å¼•ç”¨UI Textç»„ä»¶
     private float initAltitude = -10984f; 
     private Animator animator;
     private float offset;
@@ -24,13 +24,13 @@ public class PlayerAttributes : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // ¸ù¾İ½¡¿µÖµ´¥·¢²»Í¬µÄ¶¯»­
+        // æ ¹æ®å¥åº·å€¼è§¦å‘ä¸åŒçš„åŠ¨ç”»
         UpdateHealthAnimation();
 
-        // ¸üĞÂº£°Î¸ß¶ÈÎÄ±¾
+        // æ›´æ–°æµ·æ‹”é«˜åº¦æ–‡æœ¬
         UpdateAltitudeText();
 
-        // ¼ì²é½¡¿µÖµÊÇ·ñĞ¡ÓÚ0
+        // æ£€æŸ¥å¥åº·å€¼æ˜¯å¦å°äº0
         if (health <= 0)
         {
             Die();
@@ -59,7 +59,7 @@ public class PlayerAttributes : MonoBehaviour
     {
         if (shield)
         {
-            // Èç¹ûÓĞ»¤¶Ü£¬¼õÉÙÉËº¦
+            // å¦‚æœæœ‰æŠ¤ç›¾ï¼Œå‡å°‘ä¼¤å®³
             damage *= 0.5f;
         }
 
@@ -73,9 +73,9 @@ public class PlayerAttributes : MonoBehaviour
 
     void Die()
     {
-        // ´¥·¢ËÀÍöUI
+        // è§¦å‘æ­»äº¡UI
         //UIManager.Instance.ShowDeathUI();
-        // Ïú»Ù¶ÔÏó
+        // é”€æ¯å¯¹è±¡
         Destroy(gameObject);
     }
 }

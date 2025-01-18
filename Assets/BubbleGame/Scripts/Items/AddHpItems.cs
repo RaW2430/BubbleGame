@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class AddHpItems : MonoBehaviour
 {
-    private Playertest player;
+    private PlayerAttributes player;
     public int AddHpValue = 10;
     private void Awake()
     {
-        player = FindObjectOfType<Playertest>();
+        player = FindObjectOfType<PlayerAttributes>();
     }
     
     private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("AddHpItems OnTriggerEnter2D");
-        player.AddHp(AddHpValue);
+        player.AddHealth(AddHpValue);
         Destroy(gameObject);
     }
 }

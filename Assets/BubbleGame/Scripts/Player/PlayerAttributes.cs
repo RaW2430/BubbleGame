@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class PlayerAttributes : MonoBehaviour
 {
     public float health = 100f;
+    public float maxHealth = 100f;
     public float extraAcceleration = 0f;
     public TextMeshProUGUI altitudeText;
     public float invincibleTime = 5f;
@@ -73,6 +74,11 @@ public class PlayerAttributes : MonoBehaviour
         {
             Die();
         }
+    }
+    
+    public void AddHealth(float value)
+    {
+        health = Mathf.Min(health + value, maxHealth);
     }
     //无敌事件
     public void ActivateInvincibility()

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6759962452867953830
+--- !u!1 &5666467182119100945
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,39 +8,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 119629566409991300}
-  - component: {fileID: 3331657304787313871}
-  - component: {fileID: 8997605723957892583}
-  - component: {fileID: 4619692387270589840}
+  - component: {fileID: 8108396853446258014}
+  - component: {fileID: 4023808571021546194}
+  - component: {fileID: 4708131651638101091}
+  - component: {fileID: 6302264781718197139}
   m_Layer: 0
-  m_Name: rock
+  m_Name: SmalBubble
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &119629566409991300
+--- !u!4 &8108396853446258014
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6759962452867953830}
+  m_GameObject: {fileID: 5666467182119100945}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.6, y: 4.11, z: -0.27}
+  m_LocalPosition: {x: -0.03, y: 2.96, z: -0.27}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &3331657304787313871
+--- !u!212 &4023808571021546194
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6759962452867953830}
+  m_GameObject: {fileID: 5666467182119100945}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -86,13 +86,13 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &8997605723957892583
+--- !u!58 &4708131651638101091
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6759962452867953830}
+  m_GameObject: {fileID: 5666467182119100945}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -120,16 +120,17 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.9
---- !u!114 &4619692387270589840
+  m_Radius: 0.5
+--- !u!114 &6302264781718197139
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6759962452867953830}
+  m_GameObject: {fileID: 5666467182119100945}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8e90a686e373854b9b2f95b98c4a989, type: 3}
+  m_Script: {fileID: 11500000, guid: 3443c5e1b6a152f42baa8e2976ea6aa5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddHpValue: 10

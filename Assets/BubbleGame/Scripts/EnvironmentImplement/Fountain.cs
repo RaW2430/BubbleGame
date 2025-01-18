@@ -22,6 +22,10 @@ public class Fountain : MonoBehaviour
         {
             player = FindObjectOfType<PlayerController2D>();
         }
+        if(transform.position.y < player.transform.position.y - 10)
+        {
+            Destroy(gameObject);
+        }
     }
     private void OnTriggerEnter2D(Collider2D other)
     {

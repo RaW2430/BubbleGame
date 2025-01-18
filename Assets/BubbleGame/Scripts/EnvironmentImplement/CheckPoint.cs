@@ -18,5 +18,8 @@ public class CheckPoint : MonoBehaviour
         Debug.Log("CheckPoint OnTriggerEnter2D");
         //player.ReduceHp(hpCheckValue);
         playerAttributes.TakeDamage(hpCheckValue);
+        Destroy(gameObject,5f);
     }
+
+
 }

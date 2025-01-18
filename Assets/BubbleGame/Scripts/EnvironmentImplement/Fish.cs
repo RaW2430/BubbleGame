@@ -31,6 +31,10 @@ public class Fish : MonoBehaviour
             }
             else player.transform.position=transform.position;
         }
+        if(transform.position.y < player.transform.position.y - 10)
+        {
+            Destroy(gameObject);
+        }
     }
     
     private void OnTriggerEnter2D(Collider2D other)

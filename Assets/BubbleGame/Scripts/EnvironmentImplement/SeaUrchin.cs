@@ -17,4 +17,16 @@ public class SeaUrchin : MonoBehaviour
     {
         playertest.TakeDamage(damage);
     }
+    
+    private void Update()
+    {
+        if (playertest == null)
+        {
+            playertest = FindObjectOfType<PlayerAttributes>();
+        }
+        if(transform.position.y < playertest.transform.position.y - 10)
+        {
+            Destroy(gameObject);
+        }
+    }
 }

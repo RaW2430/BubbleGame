@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4708131651638101091}
   - component: {fileID: 6302264781718197139}
   m_Layer: 0
-  m_Name: Item1
+  m_Name: SopyWater
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -133,4 +133,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3443c5e1b6a152f42baa8e2976ea6aa5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AddHpValue: 10
+  AddHpValue: 50

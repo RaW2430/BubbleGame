@@ -10,14 +10,16 @@ public class Fish : MonoBehaviour,RandomParameter
     private PlayerController2D player;
     public bool isAtached = false;
     public bool isTriggered = false;
+    private GameObject playerObject;
     private void Awake()
     {
         originPos = transform.position;
-        
+        playerObject = GameObject.Find("Player");
     }
 
     private void Update()
     {
+        if ( playerObject == null) return;
         if (player == null)
         {
             player = FindObjectOfType<PlayerController2D>();

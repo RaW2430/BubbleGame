@@ -46,10 +46,10 @@ public class UIEvent : MonoBehaviour
             StartCoroutine(AdjustVirtualCameraOffset(adjustTime));
             isStart = true;
         }
-        if (isStart && isDead && Input.anyKeyDown)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
+        //if (isStart && isDead && Input.anyKeyDown)
+        //{
+        //    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        //}
     }
 
     IEnumerator FadeText()

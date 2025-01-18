@@ -9,6 +9,7 @@ public class BigFish : MonoBehaviour
     public int damage = 10;
     public float speed;
     private Vector3 originPos;
+    private GameObject player;
     private PlayerAttributes playerAttributes;
 
     
@@ -17,11 +18,13 @@ public class BigFish : MonoBehaviour
     
     private void Awake()
     {
+        player = GameObject.Find("Player"); 
         originPos = transform.position;
     }
 
     private void Update()
     {
+        if (player == null) return;
         if (playerAttributes == null)
         {
             playerAttributes = FindObjectOfType<PlayerAttributes>();

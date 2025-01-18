@@ -50,7 +50,7 @@ public class Fish : MonoBehaviour,RandomParameter
     
     void RandomParameter.GenerateRandomParameter()
     {
-        speed = UnityEngine.Random.Range(0.5f, 8f);
+        speed = UnityEngine.Random.Range(0.5f, 1.5f);
     }
 
 }

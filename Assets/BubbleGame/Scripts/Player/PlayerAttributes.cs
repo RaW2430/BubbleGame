@@ -11,10 +11,12 @@ public class PlayerAttributes : MonoBehaviour
     public float extraAcceleration = 0f;
     public TextMeshProUGUI altitudeText;
     public float invincibleTime = 5f;
+    public float hurtTime = 3f;
     public float speedUpTime = 5f;
     public float speedMultiplier = 2f;
     public bool isInvincible = false;
     public bool isDead = false;
+    public bool isHurt = false;
     public GameObject gameManager;
     private float initAltitude = -10984f;
     private Animator animator;
@@ -22,6 +24,7 @@ public class PlayerAttributes : MonoBehaviour
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
     private int healthStage = 2;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -38,11 +41,12 @@ public class PlayerAttributes : MonoBehaviour
         UpdateHealthAnimation();
         UpdateAltitudeText();
 
-        if (health <= 0)
+        if (!isDead && health <= 0)
         {
             isDead = true;
             animator.SetBool("IsDead", true); // 播放死亡动画
             rb.velocity = Vector3.zero;
+            //Debug.Log("Am I dead?");
             StartCoroutine(DieCoroutine());
         }
     }
@@ -94,9 +98,13 @@ public class PlayerAttributes : MonoBehaviour
 
         health -= damage;
 
-        if (health < 0)
+        if (health <= 0)
         {
             StartCoroutine(DieCoroutine());
+        }
+        else
+        {
+            StartCoroutine(HurtCoroutine());
         }
     }
 
@@ -104,7 +112,15 @@ public class PlayerAttributes : MonoBehaviour
     {
         health = Mathf.Min(health + value, maxHealth);
     }
-
+    //受伤事件
+    private IEnumerator HurtCoroutine()
+    {
+        isHurt = true;
+        animator.SetBool("IsHurt", true); // 播放受伤动画
+        yield return new WaitForSeconds(hurtTime); // 受伤状态持续5秒
+        animator.SetBool("IsHurt", false); // 结束受伤动画
+        isHurt = false;
+    }
     //无敌事件
     public void ActivateInvincibility()
     {
@@ -150,7 +166,7 @@ public class PlayerAttributes : MonoBehaviour
             yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length); // 等待动画播放完毕
         }
         RestartEvent();
-        Destroy(gameObject); // 销毁Player对象
+        //Destroy(gameObject); // 销毁Player对象
     }
     void RestartEvent()
     {

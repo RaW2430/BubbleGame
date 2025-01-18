@@ -1100,6 +1100,10 @@ MonoBehaviour:
   generateSOs:
   - {fileID: 11400000, guid: d27d41a0befeae541976d148b5b13b47, type: 2}
   - {fileID: 11400000, guid: b40aee8bab421a043b9ed9798a86b946, type: 2}
+  - {fileID: 11400000, guid: cf869ef576e7b3e4dadac13b4d5abbd8, type: 2}
+  - {fileID: 11400000, guid: aee24582dcab8ee4a88e865cc9da7db6, type: 2}
+  - {fileID: 11400000, guid: d66fadcccc8747f4a844e957439c1331, type: 2}
+  - {fileID: 11400000, guid: 71be68e3f52b84e4c9d28c4a25973b39, type: 2}
   generateBeginY: -160
   generateEndY: -110
   generateDistance: 50

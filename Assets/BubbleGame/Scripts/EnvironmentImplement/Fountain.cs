@@ -17,10 +17,15 @@ public class Fountain : MonoBehaviour
 
     private void Update()
     {
-        if(playerObject == null) return;    
+        if(playerObject == null) Destroy(this); 
         if (player == null)
         {
             player = FindObjectOfType<PlayerController2D>();
+        }
+        if(player == null)
+        {
+            Destroy(gameObject);
+            return;
         }
         if(transform.position.y < player.transform.position.y - 10)
         {

@@ -25,11 +25,17 @@ public class BigFish : MonoBehaviour
 
     private void Update()
     {
-        if (player == null) return;
         if (playerAttributes == null)
         {
             playerAttributes = FindObjectOfType<PlayerAttributes>();
         }
+        if (playerAttributes == null)
+        {
+            //说明没找到
+            Destroy(gameObject);
+            return;
+        }
+        
 
         // 更新位置
         transform.position = new Vector3(originPos.x + 10 * Mathf.Sin(Time.time * speed), originPos.y, originPos.z);
@@ -47,7 +53,7 @@ public class BigFish : MonoBehaviour
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
         }
-
+        
         if (transform.position.y < playerAttributes.transform.position.y - 10)
         {
             Destroy(gameObject);

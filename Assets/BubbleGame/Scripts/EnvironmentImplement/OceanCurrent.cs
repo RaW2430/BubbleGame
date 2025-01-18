@@ -38,6 +38,11 @@ public class OceanCurrent : MonoBehaviour,RandomParameter
         {
             player = FindObjectOfType<PlayerController2D>();
         }
+        if(player == null)
+        {
+            Destroy(gameObject);
+            return;
+        }
         if(transform.position.y < player.transform.position.y - 10)
         {
             Destroy(gameObject);

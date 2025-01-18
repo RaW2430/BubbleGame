@@ -100,7 +100,7 @@ public class PlayerAttributes : MonoBehaviour
 
         if (health <= 0)
         {
-            StartCoroutine(DieCoroutine());
+            //StartCoroutine(DieCoroutine());
         }
         else
         {

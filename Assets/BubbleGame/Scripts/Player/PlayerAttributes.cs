@@ -33,22 +33,21 @@ public class PlayerAttributes : MonoBehaviour
     void Update()
     {
         UpdateHealthAnimation();
-
         UpdateAltitudeText();
 
         if (health <= 0)
         {
-            Die();
+            StartCoroutine(DieCoroutine());
         }
     }
 
     void UpdateHealthAnimation()
     {
-        //if (animator != null)
-        //{
-        //    int healthStage = Mathf.FloorToInt(health / 10);
-        //    animator.SetInteger("HealthStage", healthStage);
-        //}
+        if (animator != null)
+        {
+            int healthStage = Mathf.FloorToInt(health / 10);
+            animator.SetInteger("HealthStage", healthStage);
+        }
     }
 
     void UpdateAltitudeText()
@@ -72,14 +71,15 @@ public class PlayerAttributes : MonoBehaviour
 
         if (health < 0)
         {
-            Die();
+            StartCoroutine(DieCoroutine());
         }
     }
-    
+
     public void AddHealth(float value)
     {
         health = Mathf.Min(health + value, maxHealth);
     }
+
     //无敌事件
     public void ActivateInvincibility()
     {
@@ -116,13 +116,17 @@ public class PlayerAttributes : MonoBehaviour
         yield return new WaitForSeconds(speedUpTime);
         rb.velocity = rb.velocity.normalized * originalSpeed;
     }
+
     //死亡事件
-    void Die()
+    private IEnumerator DieCoroutine()
     {
-        Destroy(gameObject);
+        if (animator != null)
+        {
+            animator.SetTrigger("IsDead"); // 播放死亡动画
+            yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length); // 等待动画播放完毕
+        }
+        Destroy(gameObject); // 销毁Player对象
     }
 }
-
-
 
 

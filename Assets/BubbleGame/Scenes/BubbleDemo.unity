@@ -2091,6 +2091,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1238710421031756422, guid: 525f7d5952027a74e861960e1e7e1bef, type: 3}
+      propertyPath: maxVerticalSpeed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2665780139544120844, guid: 525f7d5952027a74e861960e1e7e1bef, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: f29cdcbbff9eaa44b9ff42906121561b, type: 2}
     - target: {fileID: 6712387933312735655, guid: 525f7d5952027a74e861960e1e7e1bef, type: 3}
       propertyPath: m_LocalPosition.x
       value: 23.44

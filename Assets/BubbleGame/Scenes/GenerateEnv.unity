@@ -485,8 +485,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 161087074}
   generateSOs:
-  - {fileID: 11400000, guid: b40aee8bab421a043b9ed9798a86b946, type: 2}
+  - {fileID: 11400000, guid: def5df434d8312e4d8deb4416a589458, type: 2}
   - {fileID: 11400000, guid: d27d41a0befeae541976d148b5b13b47, type: 2}
+  - {fileID: 11400000, guid: b40aee8bab421a043b9ed9798a86b946, type: 2}
   generateBeginY: -160
   generateEndY: -110
   generateDistance: 50

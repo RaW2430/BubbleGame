@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fish : MonoBehaviour
+public class Fish : MonoBehaviour,RandomParameter
 {
     public float speed;
     private Vector3 originPos;
@@ -44,6 +44,11 @@ public class Fish : MonoBehaviour
         player.FreezePlayer();
         isAtached = true;
         isTriggered = true;
+    }
+    
+    void RandomParameter.GenerateRandomParameter()
+    {
+        speed = UnityEngine.Random.Range(0.5f, 8f);
     }
 
 }

@@ -55,7 +55,9 @@ public class GenerateEnv : MonoBehaviour
             while (lastGenerateYs[i] < generateEndY)
             {
                 lastGenerateYs[i] += generateSOs[i].distance;
-                Vector3 pos = new Vector3(UnityEngine.Random.Range(-10f, 10f), lastGenerateYs[i], generateSOs[i].prefab.transform.position.z);
+                float posX = UnityEngine.Random.Range(-7f, 7f);
+                if (generateSOs[i].objectType == ObjectType.CheckPoint) posX = 0;
+                Vector3 pos = new Vector3(posX, lastGenerateYs[i], generateSOs[i].prefab.transform.position.z);
                 var obj=Instantiate(generateSOs[i].prefab, pos, Quaternion.identity);
                 var randomParameter = obj.GetComponent<RandomParameter>();
                 if (randomParameter != null)

@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 765409296571266817, guid: fb8c9dce1f890df429c27882105c7889, type: 3}
   distance: 51.6
+  objectType: 3

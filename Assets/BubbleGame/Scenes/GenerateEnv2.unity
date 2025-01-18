@@ -1104,6 +1104,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: aee24582dcab8ee4a88e865cc9da7db6, type: 2}
   - {fileID: 11400000, guid: d66fadcccc8747f4a844e957439c1331, type: 2}
   - {fileID: 11400000, guid: 71be68e3f52b84e4c9d28c4a25973b39, type: 2}
+  - {fileID: 11400000, guid: 092f2004a7d0ece4a8f28a7212bbfdf7, type: 2}
+  - {fileID: 11400000, guid: 42b8965806b5f804c9b053648082839c, type: 2}
   generateBeginY: -160
   generateEndY: -110
   generateDistance: 50

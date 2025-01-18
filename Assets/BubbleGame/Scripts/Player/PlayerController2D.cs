@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class PlayerController2D : MonoBehaviour
 {
-    public float upwardAcceleration = 1f; // ���ϵļ��ٶ�
-    public float extraUpwardAcceleration = 5f; // �������ϵļ��ٶ�
-    public float horizontalForce = 10f; // ���Һ��Ƶ���
-    public float downwardForce = 10f; // ���µ���
-    public float maxVerticalSpeed = 30f; // ���ֱ�ٶ�
-    public float maxHorizontalSpeed = 10f; // ���ˮƽ�ٶ�
-    public float healthDecreaseRate = 1f; // ÿ���Ѫ��
+    public float upwardAcceleration = 1f; 
+    public float extraUpwardAcceleration = 5f; 
+    public float horizontalForce = 10f; 
+    public float downwardForce = 10f; 
+    public float maxVerticalSpeed = 30f; 
+    public float maxHorizontalSpeed = 10f; 
+    public float healthDecreaseRate = 1f; 
     public Rigidbody2D rb;
     private bool isPressingS = false;
     private bool isPressingW = false;
@@ -30,7 +30,7 @@ public class PlayerController2D : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // ��������ƶ�����
+        
         if (Input.GetKey(KeyCode.A))
         {
             rb.AddForce(Vector2.left * horizontalForce);
@@ -42,7 +42,7 @@ public class PlayerController2D : MonoBehaviour
             UnfreezePlayer();
         }
 
-        // ���S������
+        
         if (Input.GetKeyDown(KeyCode.S))
         {
             isPressingS = true;
@@ -52,10 +52,10 @@ public class PlayerController2D : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.S))
         {
             isPressingS = false;
-            sPressTime = 0f; // ���ð���ʱ��
+            sPressTime = 0f; 
         }
 
-        // ���W������
+        
         if (Input.GetKeyDown(KeyCode.W))
         {
             isPressingW = true;
@@ -71,10 +71,10 @@ public class PlayerController2D : MonoBehaviour
     // FixedUpdate is called once per physics update
     void FixedUpdate()
     {
-        // Ӧ�����ϵļ��ٶ�
+        
         rb.AddForce(Vector2.up * upwardAcceleration);
 
-        // ���S�����²�ʩ�����µ���
+        
         if (isPressingS)
         {
             rb.AddForce(Vector2.down * downwardForce);
@@ -85,7 +85,7 @@ public class PlayerController2D : MonoBehaviour
             }
         }
 
-        // ���W�����²�ʩ�Ӷ������ϵļ��ٶ�
+        
         if (isPressingW)
         {
             rb.AddForce(Vector2.up * extraUpwardAcceleration);
@@ -95,7 +95,7 @@ public class PlayerController2D : MonoBehaviour
             }
         }
 
-        // ���ƴ�ֱ�ٶ�
+        
         if (rb.velocity.y > maxVerticalSpeed)
         {
             rb.velocity = new Vector2(rb.velocity.x, maxVerticalSpeed);
@@ -105,7 +105,7 @@ public class PlayerController2D : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, -maxVerticalSpeed);
         }
 
-        // ����ˮƽ�ٶ�
+        
         if (rb.velocity.x > maxHorizontalSpeed)
         {
             rb.velocity = new Vector2(maxHorizontalSpeed, rb.velocity.y);

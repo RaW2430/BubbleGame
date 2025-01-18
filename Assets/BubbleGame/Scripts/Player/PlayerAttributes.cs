@@ -13,12 +13,13 @@ public class PlayerAttributes : MonoBehaviour
     public float invincibleTime = 5f;
     public float speedUpTime = 5f;
     public float speedMultiplier = 2f;
-    public bool isInvincible = false;
+    public bool isInvincible = false; 
     private float initAltitude = -10984f;
     private Animator animator;
     private float offset;
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
+    private int healthStage = 2;
 
     // Start is called before the first frame update
     void Start()
@@ -45,7 +46,26 @@ public class PlayerAttributes : MonoBehaviour
     {
         if (animator != null)
         {
-            int healthStage = Mathf.FloorToInt(health / 10);
+            if (health > 0 && health < 10)
+            {
+                healthStage = 0;
+            }
+            else if (health >= 10 && health < 30)
+            {
+                healthStage = 1;
+            }
+            else if (health >= 30 && health < 60)
+            {
+                healthStage = 2;
+            }
+            else if(health >= 60 && health < 90)
+            {
+                healthStage = 3;
+            }
+            else if (health >= 90)
+            {
+                healthStage = 4;
+            }
             animator.SetInteger("HealthStage", healthStage);
         }
     }

@@ -8,6 +8,7 @@ public class StartEvent : MonoBehaviour
     public TextMeshProUGUI textMeshPro; // 需要在Inspector中设置
     public GameObject player; // 需要在Inspector中设置
     public GameObject virtualCamera; // 需要在Inspector中设置
+    public float upwardAcceleration = 3f;    
     public float delayTime = 5f;
     private bool isBlinking = true;
 
@@ -28,7 +29,9 @@ public class StartEvent : MonoBehaviour
             textMeshPro.gameObject.SetActive(false);
 
             // 激活Player对象
-            player.SetActive(true);
+            //player.SetActive(true);
+            PlayerController2D playerController2D = player.GetComponent<PlayerController2D>();
+            playerController2D.upwardAcceleration = upwardAcceleration;
 
             // 启动协程延迟激活虚拟相机
             StartCoroutine(ActivateVirtualCameraAfterDelay(delayTime));

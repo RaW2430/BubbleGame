@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: CheckPoint
   m_EditorClassIdentifier: 
   prefab: {fileID: 224309448145435099, guid: 4200d9eb69cb65940886fc7f0dc71ec5, type: 3}
-  distance: 250
+  distance: 120
   objectType: 10

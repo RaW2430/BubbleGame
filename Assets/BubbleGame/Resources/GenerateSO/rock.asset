@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: rock
   m_EditorClassIdentifier: 
   prefab: {fileID: 6759962452867953830, guid: f53794406ae4baf4b8cc008db3ceb841, type: 3}
-  distance: 30
+  distance: 10
   objectType: 6

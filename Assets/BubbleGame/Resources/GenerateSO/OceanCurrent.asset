@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: OceanCurrent
   m_EditorClassIdentifier: 
   prefab: {fileID: 8590252370654859645, guid: 1dea6c7800520dc48b62575e3e33d24e, type: 3}
-  distance: 53
+  distance: 40
   objectType: 5

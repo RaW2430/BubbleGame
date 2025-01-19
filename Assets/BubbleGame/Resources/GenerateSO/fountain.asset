@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: fountain
   m_EditorClassIdentifier: 
   prefab: {fileID: 5119600148189778374, guid: cd9d3f9dee589984787773a11e5e4aa4, type: 3}
-  distance: 18.9
+  distance: 40
   objectType: 11

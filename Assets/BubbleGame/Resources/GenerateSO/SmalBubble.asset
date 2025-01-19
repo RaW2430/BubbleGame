@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: SmalBubble
   m_EditorClassIdentifier: 
   prefab: {fileID: 5666467182119100945, guid: c4e5e07313215f74c86622925e0841cb, type: 3}
-  distance: 12.8
+  distance: 6
+  objectType: 0

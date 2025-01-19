@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe0a082440723784ab381b9ec6f6c31a, type: 3}
-  m_Name: bigFIsh
+  m_Script: {fileID: 11500000, guid: 637d5a23983bb9646b9b3b10390d6677, type: 3}
+  m_Name: pool 4
   m_EditorClassIdentifier: 
-  prefab: {fileID: 2264776009960675773, guid: f599728a75e52ce4c90cdd637ab4ece0, type: 3}
-  distance: 50
-  objectType: 9
+  generateSOs:
+  - {fileID: 11400000, guid: 092f2004a7d0ece4a8f28a7212bbfdf7, type: 2}

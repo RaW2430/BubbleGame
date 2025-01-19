@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: fish
   m_EditorClassIdentifier: 
   prefab: {fileID: 1258201127364364072, guid: f1a78edf0e2d5c74e98700f86e504fc7, type: 3}
-  distance: 21
+  distance: 40
   objectType: 7

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: seaUrchin
   m_EditorClassIdentifier: 
   prefab: {fileID: 9193711245207394229, guid: 4c2e6a63b1640c04ea8baf3c1cde3965, type: 3}
-  distance: 13.5
+  distance: 40
   objectType: 8

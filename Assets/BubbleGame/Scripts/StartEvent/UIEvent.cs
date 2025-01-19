@@ -12,7 +12,7 @@ public class UIEvent : MonoBehaviour
     public TextMeshProUGUI tryAgainText; // 需要在Inspector中设置
     public GameObject player; // 需要在Inspector中设置
     public CinemachineVirtualCamera virtualCamera; // 需要在Inspector中设置
-    public float upwardAcceleration = 3f;
+    public float upwardAcceleration = 6f;
     public float delayTime = 5f;
     public float adjustTime = 2f; // 调整时间
     private bool isStart = false;
@@ -50,6 +50,16 @@ public class UIEvent : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+
+        // 确保y轴速度为正值
+        if (isStart)
+        {
+            Rigidbody2D rb = player.GetComponent<Rigidbody2D>();
+            if (rb.velocity.y < 0)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, 0);
+            }
+        }
     }
 
     IEnumerator FadeText()
@@ -74,10 +84,14 @@ public class UIEvent : MonoBehaviour
 
     public void RestartGame()
     {
+        PlayerAttributes playerAttributes = player.GetComponent<PlayerAttributes>();
+        float currentAltitude = playerAttributes.currentAltitude;
+        gameOverText.text = "nOw yOu On: " + currentAltitude.ToString("F2") + "m";
         gameOverText.gameObject.SetActive(true);
         tryAgainText.gameObject.SetActive(true);
         isDead = true;
     }
+
     private void SetTextAlpha(float alpha)
     {
         Color color = stratText.color;

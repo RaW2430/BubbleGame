@@ -19,6 +19,7 @@ public class PlayerAttributes : MonoBehaviour
     public bool isInvincible = false;
     public bool isDead = false;
     public bool isHurt = false;
+    public float currentAltitude;
     public GameObject gameManager;
     private float initAltitude = -10984f;
     private Animator animator;
@@ -56,25 +57,11 @@ public class PlayerAttributes : MonoBehaviour
         // 根据health的大小动态设置localScale，形变倍率为(0.3，1.5)
         float scaleMultiplier = Mathf.Lerp(0.3f, 1.5f, health / maxHealth);
         transform.localScale = originalScale * scaleMultiplier;
-        //switch (healthStage)
-        //{
-        //    case 0:
-        //        //transform.localScale = new Vector3(10f, 10f, 1f); // 修改scale倍率
-        //        transform.localScale = originalScale * 0.3f;
-        //        break;
-        //    case 1:
-        //        //transform.localScale = new Vector3(15f, 15f, 1f); // 修改scale倍率
-        //        transform.localScale = originalScale * 0.7f;
-        //        break;
-        //    case 2:
-        //        //transform.localScale = new Vector3(20f, 20f, 1f); // 修改scale倍率
-        //        transform.localScale = originalScale * 1f;
-        //        break;
-        //    case 3:
-        //        //transform.localScale = new Vector3(25f, 25f, 1f); // 修改scale倍率
-        //        transform.localScale = originalScale * 1.5f;
-        //        break;
-        //}
+
+        if (currentAltitude >= 0)
+        {
+            
+        }
     }
 
     void UpdateHealthAnimation()
@@ -115,6 +102,7 @@ public class PlayerAttributes : MonoBehaviour
         {
             float newAltitude = transform.position.y + initAltitude - offset;
             altitudeText.text = "Altitude: " + newAltitude.ToString("F2") + "m";
+            currentAltitude = newAltitude;  
         }
     }
 

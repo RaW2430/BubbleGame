@@ -30,7 +30,7 @@ public class PlayerController2D : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
         if (Input.GetKey(KeyCode.A))
         {
             rb.AddForce(Vector2.left * horizontalForce);
@@ -42,7 +42,7 @@ public class PlayerController2D : MonoBehaviour
             UnfreezePlayer();
         }
 
-        
+
         if (Input.GetKeyDown(KeyCode.S))
         {
             isPressingS = true;

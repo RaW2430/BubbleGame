@@ -44,7 +44,7 @@ public class BigFish : MonoBehaviour
         lastPosition = transform.position;
 
         // 判断速度方向并旋转
-        if (velocity.x > 0)
+        if (velocity.x < 0)
         {
             GetComponent<SpriteRenderer>().flipX = false;
         }

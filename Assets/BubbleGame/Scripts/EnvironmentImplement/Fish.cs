@@ -38,7 +38,7 @@ public class Fish : MonoBehaviour, RandomParameter
         lastPosition = transform.position;
 
         // �ж��ٶȷ�����ת
-        if (velocity.x > 0)
+        if (velocity.x < 0)
         {
             GetComponent<SpriteRenderer>().flipX = false;
         }

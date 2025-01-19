@@ -3,18 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
-using Cinemachine; // ÒýÈëCinemachineÃüÃû¿Õ¼ä
+using Cinemachine;
+using UnityEngine.UI; // ï¿½ï¿½ï¿½ï¿½Cinemachineï¿½ï¿½ï¿½ï¿½ï¿½Õ¼ï¿½
 
 public class UIEvent : MonoBehaviour
 {
-    public TextMeshProUGUI stratText; // ÐèÒªÔÚInspectorÖÐÉèÖÃ
-    public TextMeshProUGUI gameOverText; // ÐèÒªÔÚInspectorÖÐÉèÖÃ
-    public TextMeshProUGUI tryAgainText; // ÐèÒªÔÚInspectorÖÐÉèÖÃ
-    public GameObject player; // ÐèÒªÔÚInspectorÖÐÉèÖÃ
-    public CinemachineVirtualCamera virtualCamera; // ÐèÒªÔÚInspectorÖÐÉèÖÃ
+    public TextMeshProUGUI stratText; // ï¿½ï¿½Òªï¿½ï¿½Inspectorï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    public TextMeshProUGUI gameOverText; // ï¿½ï¿½Òªï¿½ï¿½Inspectorï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    public Image gameoverImage;
+    public TextMeshProUGUI tryAgainText; // ï¿½ï¿½Òªï¿½ï¿½Inspectorï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    public Image GameTitle; 
+    public GameObject player; // ï¿½ï¿½Òªï¿½ï¿½Inspectorï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    public CinemachineVirtualCamera virtualCamera; // ï¿½ï¿½Òªï¿½ï¿½Inspectorï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public float upwardAcceleration = 6f;
     public float delayTime = 5f;
-    public float adjustTime = 2f; // µ÷ÕûÊ±¼ä
+    public float adjustTime = 2f; // ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
     private bool isStart = false;
     private bool isDead = false;
     private bool isBlinking = true;
@@ -28,21 +31,22 @@ public class UIEvent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // ¼ì²âÈÎÒâ¼üµÄ°´ÏÂ
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä°ï¿½ï¿½ï¿½
         if (!isStart && Input.anyKeyDown)
         {
-            // Í£Ö¹½¥±ä²¢Òþ²ØstratText
+            // Í£Ö¹ï¿½ï¿½ï¿½ä²¢ï¿½ï¿½ï¿½ï¿½stratText
             isBlinking = false;
             stratText.gameObject.SetActive(false);
+            GameTitle.gameObject.SetActive(false);
 
-            // ¼¤»îPlayer¶ÔÏó
+            // ï¿½ï¿½ï¿½ï¿½Playerï¿½ï¿½ï¿½ï¿½
             //player.SetActive(true);
             PlayerController2D playerController2D = player.GetComponent<PlayerController2D>();
             playerController2D.upwardAcceleration = upwardAcceleration;
 
-            // Æô¶¯Ð­³ÌÑÓ³Ù¼¤»îÐéÄâÏà»ú
+            // ï¿½ï¿½ï¿½ï¿½Ð­ï¿½ï¿½ï¿½Ó³Ù¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             //StartCoroutine(ActivateVirtualCameraAfterDelay(delayTime));
-            // Æô¶¯Ð­³Ìµ÷ÕûÐéÄâÏà»úµÄTracked Object Offset
+            // ï¿½ï¿½ï¿½ï¿½Ð­ï¿½Ìµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Tracked Object Offset
             StartCoroutine(AdjustVirtualCameraOffset(adjustTime));
             isStart = true;
         }
@@ -51,7 +55,7 @@ public class UIEvent : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
-        // È·±£yÖáËÙ¶ÈÎªÕýÖµ
+        // È·ï¿½ï¿½yï¿½ï¿½ï¿½Ù¶ï¿½Îªï¿½ï¿½Öµ
         if (isStart)
         {
             Rigidbody2D rb = player.GetComponent<Rigidbody2D>();
@@ -66,7 +70,7 @@ public class UIEvent : MonoBehaviour
     {
         while (isBlinking)
         {
-            // ½¥±äÍ¸Ã÷¶È´Ó1µ½0ÔÙµ½1
+            // ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ï¿½ï¿½È´ï¿½1ï¿½ï¿½0ï¿½Ùµï¿½1
             for (float alpha = 1; alpha >= 0; alpha -= 0.05f)
             {
                 SetTextAlpha(alpha);
@@ -78,7 +82,7 @@ public class UIEvent : MonoBehaviour
                 yield return new WaitForSeconds(0.05f);
             }
         }
-        // È·±£stratTextÔÚÍ£Ö¹½¥±äºóÊÇÒþ²ØµÄ
+        // È·ï¿½ï¿½stratTextï¿½ï¿½Í£Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Øµï¿½
         SetTextAlpha(0);
     }
 
@@ -88,6 +92,7 @@ public class UIEvent : MonoBehaviour
         float currentAltitude = playerAttributes.currentAltitude;
         gameOverText.text = "nOw yOu On: " + currentAltitude.ToString("F2") + "m";
         gameOverText.gameObject.SetActive(true);
+        gameoverImage.gameObject.SetActive(true);
         tryAgainText.gameObject.SetActive(true);
         isDead = true;
     }
@@ -101,9 +106,9 @@ public class UIEvent : MonoBehaviour
 
     IEnumerator ActivateVirtualCameraAfterDelay(float delay)
     {
-        // µÈ´ýÖ¸¶¨µÄÃëÊý
+        // ï¿½È´ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         yield return new WaitForSeconds(delay);
-        // ¼¤»îÐéÄâÏà»ú
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         virtualCamera.gameObject.SetActive(true);
     }
 

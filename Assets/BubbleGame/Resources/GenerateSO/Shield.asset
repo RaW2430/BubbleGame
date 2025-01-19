@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Shield
   m_EditorClassIdentifier: 
   prefab: {fileID: 7503947425813204410, guid: 9f179d52ccf67134ebacaee147db4c66, type: 3}
-  distance: 60
+  distance: 250
   objectType: 4

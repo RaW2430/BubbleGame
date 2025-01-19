@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: SoapyWater
   m_EditorClassIdentifier: 
   prefab: {fileID: 5666467182119100945, guid: d4fa955a752de9b46a8d6423a8fa78a6, type: 3}
-  distance: 60
+  distance: 250
   objectType: 1

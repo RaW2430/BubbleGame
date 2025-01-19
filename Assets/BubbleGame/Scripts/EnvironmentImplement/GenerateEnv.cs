@@ -82,6 +82,7 @@ public class GenerateEnv : MonoBehaviour
                 }
             }
         }*/
+        List<float> posxs = new List<float>();
         for (int i = 0; i < soLis.Count; i++)
         {
             //从里面随机选一个
@@ -89,6 +90,15 @@ public class GenerateEnv : MonoBehaviour
             var so = soLis[i].generateSOs[index];
             //从范围里面随机一个位置
             float posX = UnityEngine.Random.Range(-7f, 7f);
+            //检查是否带有太多重复的
+            for (int j = 0; j < posxs.Count; j++)
+            {
+                if(Mathf.Abs(posX-posxs[j])<2)
+                {
+                    posX = UnityEngine.Random.Range(-7f, 7f);
+                    j = -1;
+                }
+            }
             if(lastGenerateYs[i]+so.distance>generateEndY)
             {
                 continue;

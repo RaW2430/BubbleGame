@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe0a082440723784ab381b9ec6f6c31a, type: 3}
   m_Name: OceanCurrent
   m_EditorClassIdentifier: 
-  prefab: {fileID: 8590252370654859645, guid: 1dea6c7800520dc48b62575e3e33d24e, type: 3}
+  prefab: {fileID: 3293186908046566944, guid: 15b45de02c7ed0b49af9463d2706f272, type: 3}
   distance: 40
   objectType: 5

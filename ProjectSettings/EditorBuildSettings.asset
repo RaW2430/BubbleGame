@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/BubbleGame/Scenes/BubbleDemo.unity
-    guid: 6dab0c7ad173dcc45a6d7f1f9c0d9430
+    path: Assets/BubbleGame/Scenes/GenerateEnv4.unity
+    guid: 05242ffc59b7dcf44b85531004f59e60
   m_configObjects: {}

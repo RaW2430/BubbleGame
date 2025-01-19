@@ -175,7 +175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClip: {fileID: 8300000, guid: 0bbad16c435fda042ba16bc86d6c551e, type: 3}
-  volume: 1
+  volume: 3
   isTrap: 0
 --- !u!82 &1085267965380785476
 AudioSource:

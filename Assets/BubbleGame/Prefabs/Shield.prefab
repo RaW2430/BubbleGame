@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21b02f773cb9ccb4dafe963d5090591c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  invincibleTime: 10
+  invincibleTime: 5
 --- !u!61 &3271036630383956141
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -176,7 +176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClip: {fileID: 8300000, guid: fdf02a9503bdabc4a89a7bddd80a278c, type: 3}
-  volume: 1
+  volume: 2
   isTrap: 0
 --- !u!82 &3205289188710201245
 AudioSource:

@@ -148,7 +148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedMultiplier: 3
   speedUpTime: 5
-  invincibleTime: 5
+  invincibleTime: 3
 --- !u!114 &8351522300843448472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,7 +178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClip: {fileID: 8300000, guid: fdf02a9503bdabc4a89a7bddd80a278c, type: 3}
-  volume: 1
+  volume: 2
   isTrap: 0
 --- !u!82 &1297433139528518865
 AudioSource:

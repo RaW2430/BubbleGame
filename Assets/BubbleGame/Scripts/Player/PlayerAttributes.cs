@@ -193,7 +193,22 @@ public class PlayerAttributes : MonoBehaviour
             yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length); // 等待动画播放完毕
         }
         RestartEvent();
-        Destroy(gameObject); // 销毁Player对象
+        //Destroy(gameObject); // 销毁Player对象
+        HidePlayer();
+    }
+    void HidePlayer()
+    {
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.enabled = false; // 禁用渲染
+        }
+        Collider2D collider = GetComponent<Collider2D>();
+        if (collider != null)
+        {
+            collider.enabled = false; // 禁用碰撞
+        }
+        // 你可以在这里禁用其他组件，例如移动脚本等
     }
     void RestartEvent()
     {

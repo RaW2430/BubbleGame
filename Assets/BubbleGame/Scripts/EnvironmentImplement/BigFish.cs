@@ -46,11 +46,11 @@ public class BigFish : MonoBehaviour
         // 判断速度方向并旋转
         if (velocity.x > 0)
         {
-            transform.rotation = Quaternion.Euler(0, 180, 0);
+            GetComponent<SpriteRenderer>().flipX = false;
         }
         else
         {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
+            GetComponent<SpriteRenderer>().flipX = true;
         }
         
         if (transform.position.y < playerAttributes.transform.position.y - 10)

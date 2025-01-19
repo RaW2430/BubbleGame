@@ -6,6 +6,7 @@ public class AudioEffect : MonoBehaviour
 {
     public AudioClip audioClip; // 要播放的音频
     public float volume = 1.0f; // 音量
+    public bool isTrap = false; // 是否为陷阱音效
     private AudioSource audioSource;
 
     // Start is called before the first frame update
@@ -28,7 +29,17 @@ public class AudioEffect : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            PlayAudio(audioClip, volume);
+            PlayerAttributes playerAttributes = other.GetComponent<PlayerAttributes>();
+            if (playerAttributes != null)
+            {
+                if (isTrap && playerAttributes.isInvincible)
+                {
+                    // 如果是陷阱音效且玩家处于无敌状态，则不播放音效
+                    Debug.Log("Player is invincible, no need to play audio effect.");
+                    return;
+                }
+                PlayAudio(audioClip, volume);
+            }
         }
     }
 
@@ -42,4 +53,5 @@ public class AudioEffect : MonoBehaviour
         }
     }
 }
+
 

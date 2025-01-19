@@ -190,7 +190,8 @@ public class PlayerAttributes : MonoBehaviour
     {
         if (animator != null)
         {
-            yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length); // 等待动画播放完毕
+            yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length * 0f); // 等待动画播放完毕
+            //yield return new WaitForSeconds(10f); // 等待动画播放完毕
         }
         RestartEvent();
         //Destroy(gameObject); // 销毁Player对象

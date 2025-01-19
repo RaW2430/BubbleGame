@@ -192,6 +192,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioClip: {fileID: 8300000, guid: 746d2e4326ab2654390c4da93d033c36, type: 3}
   volume: 1
+  isTrap: 1
 --- !u!82 &353858407358572504
 AudioSource:
   m_ObjectHideFlags: 0

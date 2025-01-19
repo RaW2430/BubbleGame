@@ -33,6 +33,19 @@ public class GenerateEnv : MonoBehaviour
         {
             lastGenerateYs.Add(player.position.y + generateDistance);
         }
+        //将checkpoint放在最开始
+        int checkPointIndex = 0;
+        for (int i = 0; i < soLis.Count; i++)
+        {
+            if(soLis[i].generateSOs.Count==1&&soLis[i].generateSOs[0].objectType==ObjectType.CheckPoint)
+            {
+                checkPointIndex = i;
+                break;
+            }
+        }
+        var temp = soLisArray[0];
+        soLis[0] = soLis[checkPointIndex];
+        soLis[checkPointIndex] = temp;
     }
 
     private void Update()
@@ -94,6 +107,7 @@ public class GenerateEnv : MonoBehaviour
                 randomParameter.GenerateRandomParameter();
             }
             lastGenerateYs[i] = posY;
+            if (i == 0) break;
         }
 
 }

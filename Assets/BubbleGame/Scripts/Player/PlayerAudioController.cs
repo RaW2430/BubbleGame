@@ -17,7 +17,7 @@ public class PlayerAudioController : MonoBehaviour
     public AudioClip audio_Death; // 玩家死亡时播放的音频
     public float audio_default_volume = 0.3f;
     public float audio_pressKey_volume = 3.0f;
-    public float audio_item_volume = 1.0f;
+    //public float audio_item_volume = 1.0f;
     public float audio_Death_volume = 1.0f;
     private AudioSource audioSource;
     private PlayerAttributes playerAttributes;

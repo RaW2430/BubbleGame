@@ -5,7 +5,7 @@ using UnityEngine;
 public class TrapEffect : MonoBehaviour
 {
     public GameObject hurtPointPrefab; // 预制体
-
+    private bool hasTriggered = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,8 +20,18 @@ public class TrapEffect : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        PlayerAttributes playerAttributes = other.GetComponent<PlayerAttributes>();
+        if (!hasTriggered && other.CompareTag("Player"))
         {
+            hasTriggered = true;
+            if(playerAttributes != null)
+            {
+                if(playerAttributes.isInvincible)
+                {
+                    Debug.Log("Player is invincible!");
+                    return;
+                }   
+            }   
             Vector3 triggerPosition = other.ClosestPoint(transform.position); // 获取触碰位置
             Instantiate(hurtPointPrefab, triggerPosition, Quaternion.identity); // 生成HurtPoint对象
         }

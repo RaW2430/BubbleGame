@@ -7,7 +7,8 @@ using static ItemEffect;
 
 public class PlayerAttributes : MonoBehaviour
 {
-    public float health = 100f;
+    public float health = 60f;
+    private float initHealth;
     public float maxHealth = 100f;
     public float extraAcceleration = 0f;
     public TextMeshProUGUI altitudeText;
@@ -35,6 +36,7 @@ public class PlayerAttributes : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         originalScale = transform.localScale; // 保存原始scale
+        initHealth = health;
     }
 
     // Update is called once per frame
@@ -51,26 +53,28 @@ public class PlayerAttributes : MonoBehaviour
             //Debug.Log("Am I dead?");
             StartCoroutine(DieCoroutine());
         }
-        
-        switch (healthStage)
-        {
-            case 0:
-                //transform.localScale = new Vector3(10f, 10f, 1f); // 修改scale倍率
-                transform.localScale = originalScale * 0.7f;
-                break;
-            case 1:
-                //transform.localScale = new Vector3(15f, 15f, 1f); // 修改scale倍率
-                transform.localScale = originalScale * 0.9f;
-                break;
-            case 2:
-                //transform.localScale = new Vector3(20f, 20f, 1f); // 修改scale倍率
-                transform.localScale = originalScale * 1f;
-                break;
-            case 3:
-                //transform.localScale = new Vector3(25f, 25f, 1f); // 修改scale倍率
-                transform.localScale = originalScale * 1.5f;
-                break;
-        }
+        // 根据health的大小动态设置localScale，形变倍率为(0.3，1.5)
+        float scaleMultiplier = Mathf.Lerp(0.3f, 1.5f, health / maxHealth);
+        transform.localScale = originalScale * scaleMultiplier;
+        //switch (healthStage)
+        //{
+        //    case 0:
+        //        //transform.localScale = new Vector3(10f, 10f, 1f); // 修改scale倍率
+        //        transform.localScale = originalScale * 0.3f;
+        //        break;
+        //    case 1:
+        //        //transform.localScale = new Vector3(15f, 15f, 1f); // 修改scale倍率
+        //        transform.localScale = originalScale * 0.7f;
+        //        break;
+        //    case 2:
+        //        //transform.localScale = new Vector3(20f, 20f, 1f); // 修改scale倍率
+        //        transform.localScale = originalScale * 1f;
+        //        break;
+        //    case 3:
+        //        //transform.localScale = new Vector3(25f, 25f, 1f); // 修改scale倍率
+        //        transform.localScale = originalScale * 1.5f;
+        //        break;
+        //}
     }
 
     void UpdateHealthAnimation()
@@ -80,22 +84,22 @@ public class PlayerAttributes : MonoBehaviour
             CircleCollider2D circleCollider = GetComponent<CircleCollider2D>();
             if (circleCollider != null)
             {
-                if (health > 0 && health < 30)
+                if (health > 0 && health < 25)
                 {
                     healthStage = 0;
                     //circleCollider.radius = 0.16f; // 修改圆形碰撞体的倍率
                 }
-                else if (health >= 30 && health < 60)
+                else if (health >= 25 && health < 50)
                 {
                     healthStage = 1;
                     //circleCollider.radius = 0.32f; // 修改圆形碰撞体的倍率
                 }
-                else if (health >= 60 && health < 90)
+                else if (health >= 50 && health < 75)
                 {
                     healthStage = 2;
                     //circleCollider.radius = 0.47f; // 修改圆形碰撞体的倍率
                 }
-                else if (health >= 90)
+                else if (health >= 75)
                 {
                     healthStage = 3;
                     //circleCollider.radius = 0.62f; // 修改圆形碰撞体的倍率
